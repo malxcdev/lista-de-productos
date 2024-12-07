@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import addToCartIcon from '../assets/images/icon-add-to-cart.svg'
 
-function Product({ url, category, name, price, onAddToCart }) {
+function Product({ id, url, category, name, price, onAddToCart }) {
     return (
         <section className='flex flex-col mb-8'>
             <figure className="relative mb-10">
