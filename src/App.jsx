@@ -1,19 +1,13 @@
 import Product from "./components/Product";
 import products from "./data/products";
 import YouCart from "./components/YouCart";
-import waffle from "./assets/images/image-waffle-mobile.jpg";
+import { useState } from "react";
 
 function App() {
   return (
     <>
       <div className="p-8 bg-rose-100">
         <h2 className="font-bold text-5xl mb-10 text-rose-900">Desserts</h2>
-        <Product
-          category="Waffle"
-          name="Waffle with Berries"
-          price="6.50"
-          url={waffle}
-        />
         {products.map((products) => (
           <Product
             key={products.id}
@@ -21,6 +15,7 @@ function App() {
             name={products.name}
             price={products.price}
             url={products.url}
+            onAddToCart={() => handleAddToCart(product)}
           />
         ))}
         <h2 className="font-bold text-4xl text-red mb-10">
@@ -29,6 +24,19 @@ function App() {
         <YouCart></YouCart>
         <YouCart></YouCart>
         <YouCart></YouCart>
+        <section>
+          <div>
+            <div className="flex items-center justify-between bg-white pl-5 pr-7 py-5 rounded-lg border-b border-rose-100">
+              <h2 className="text-xl">Order Total</h2>
+              <p className="font-bold text-4xl text-rose-900">$46.50</p>
+            </div>
+          </div>
+        </section>
+        <section className="flex justify-center bg-red rounded-3xl py-5 mt-8 hover:bg-opacity-85 cursor-pointer">
+          <button className="text-white font-semibold text-xl ">
+            Confirm Order
+          </button>
+        </section>
       </div>
     </>
   );
