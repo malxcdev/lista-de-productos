@@ -30,8 +30,6 @@ function App() {
       return carritoActualizado;
     });
   };
-
-  console.log(cart);
   
   return (
     <>

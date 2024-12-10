@@ -12,8 +12,8 @@ function YouCart({cart}) {
               <h5 className="font-semibold text-xl text-rose-900">{product.name}</h5>
               <div className="flex justify-start gap-4">
                 <p className="text-red font-semibold text-xl">{product.quantity}x</p>
-                <p className="font-light text-xl text-rose-400">@$5.50</p>
-                <p className="font-medium text-rose-500 text-xl ">#{product.price}</p>
+                <p className="font-light text-xl text-rose-400">@${product.price}</p>
+                <p className="font-medium text-rose-500 text-xl ">${(product.quantity*product.price).toFixed(2)}</p>
               </div>
             </div>
             <a className="w-1/2 flex justify-end cursor-pointer">
