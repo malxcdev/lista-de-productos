@@ -4,8 +4,38 @@ import YouCart from "./components/YouCart";
 import { useState } from "react";
 
 function App() {
+
+  const [cart, setCart] = useState([]);
+
+  const handleAddToCart = (product) => {
+    // Actualiza el carrito con el nuevo producto
+    setCart((carritoAnterior) => {
+      // 1. Buscar si el producto ya existe en el carrito
+      let productoExistente = false;
+      let carritoActualizado = carritoAnterior.map((item) => {
+        if (item.id === product.id) {
+          // Si el producto existe, aumentar la cantidad
+          productoExistente = true;
+          return { ...item, quantity: item.quantity + 1 }; // Aumentamos la cantidad en 1
+        }
+        return item; 
+      });
+  
+      // 2. Si el producto no existe, agregarlo al carrito con quantity: 1
+      if (!productoExistente) {
+        carritoActualizado = [...carritoActualizado, { ...product, quantity: 1 }];
+      }
+  
+      // 3. Retornar el carrito actualizado
+      return carritoActualizado;
+    });
+  };
+
+  console.log(cart);
+  
   return (
     <>
+
       <div className="p-8 bg-rose-100">
         <h2 className="font-bold text-5xl mb-10 text-rose-900">Desserts</h2>
         {products.map((products) => (
@@ -15,15 +45,13 @@ function App() {
             name={products.name}
             price={products.price}
             url={products.url}
-            onAddToCart={() => handleAddToCart(product)}
+            onAddToCart={() => handleAddToCart(products)}
           />
         ))}
         <h2 className="font-bold text-4xl text-red mb-10">
           You Cart <span>(7)</span>
         </h2>
-        <YouCart></YouCart>
-        <YouCart></YouCart>
-        <YouCart></YouCart>
+        <YouCart cart={cart}></YouCart>
         <section>
           <div>
             <div className="flex items-center justify-between bg-white pl-5 pr-7 py-5 rounded-lg border-b border-rose-100">
