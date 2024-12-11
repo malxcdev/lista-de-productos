@@ -1,6 +1,7 @@
 import Product from "./components/Product";
 import products from "./data/products";
 import YouCart from "./components/YouCart";
+import OrderConfirmationModal from "./components/OrderConfirmationModal";
 import { useState } from "react";
 
 function App() {
@@ -43,6 +44,10 @@ function App() {
   // Obtener el total dinámico del carrito
   const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
 
+  const open = true;
+  const close = false;
+
+
   return (
     <div className="p-8 bg-rose-100">
       <h2 className="font-bold text-5xl mb-10 text-rose-900">Desserts</h2>
@@ -80,6 +85,7 @@ function App() {
           Confirm Order
         </button>
       </section>
+      <OrderConfirmationModal  isOpen={open} onClose={close} orderNumber="1111" total={total} />
     </div>
   );
 }

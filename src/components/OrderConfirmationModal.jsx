@@ -18,7 +18,7 @@ function OrderConfirmationModal({ isOpen, onClose, orderNumber, total }) {
         >
           ✕
         </button>
-        <h2 className="text-2xl font-bold mb-4">¡Pedido Confirmado!</h2>
+        <h2 className="text-2xl font-bold mb-4 text-rose-900">Order Confirmed</h2>
         <p className="mb-2">Tu pedido se ha realizado con éxito.</p>
         <p className="mb-4">
           Número de Pedido: <span className="font-semibold">{orderNumber}</span>
